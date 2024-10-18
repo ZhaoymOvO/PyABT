@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env python3
 
 import os
 import re
@@ -79,10 +79,14 @@ for i in os.listdir(source_path):
         source_file_list.append(i)
 
 target_file_list = [
-    f"{re.findall(r'(.+)\..+?', i)[0]}.{target_format}" for i in source_file_list
+    re.findall(r"(.+)\..+?", i)[0] + "." + target_format
+    for i in source_file_list
 ]
 
 for i in range(len(source_file_list)):
+    print(
+        f"[{i + 1}/{len(source_file_list)}] Converting {source_file_list[i]} to {target_format}"
+    )
     if os.name == "nt":
         os.system(
             f"sox '{source_path}\\{source_file_list[i]}' '{target_path}\\{target_file_list[i]}'"
