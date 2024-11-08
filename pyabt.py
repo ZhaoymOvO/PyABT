@@ -85,7 +85,7 @@ target_file_list = [
 
 for i in range(len(source_file_list)):
     print(
-        f"[{i + 1}/{len(source_file_list)}] Converting {source_file_list[i]} to {target_format}"
+        f" [{i + 1}/{len(source_file_list)}]\tConverting '{source_file_list[i]}' to {target_format}"
     )
     if os.name == "nt":
         os.system(
